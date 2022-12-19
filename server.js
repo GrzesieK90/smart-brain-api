@@ -1,4 +1,3 @@
-const { createClient } = require('@supabase/supabase-js')
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
@@ -9,13 +8,12 @@ const signin = require('./Controllers/signin');
 const profile = require('./Controllers/profile');
 const image = require('./Controllers/image');
 
-const supabaseUrl = 'https://mdaquwtehnfqgxfyqvvg.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
-
 const db = knex({
   client: 'pg',
-  connection: supabase
+  connection: {
+    host : 'https://mdaquwtehnfqgxfyqvvg.supabase.co'
+    
+  }
 });
 
 const app = express();
