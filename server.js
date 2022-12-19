@@ -12,10 +12,7 @@ const db = knex({
   client: 'pg',
   connection: {
     host : 'https://mdaquwtehnfqgxfyqvvg.supabase.co',
-    port : 5432,
-    user : 'postgres',
-    password : '14Strong02Pass90',
-    database : 'smartbrain'
+    ssl: true
   }
 });
 
