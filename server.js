@@ -11,7 +11,7 @@ const image = require('./Controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    connection_string: "postgres://postgres:[YOUR-PASSWORD]@db.mdaquwtehnfqgxfyqvvg.supabase.co:6543/postgres"
+    connection_string: "postgres://postgres:[1dqshvpUeVcHocxO]@db.mdaquwtehnfqgxfyqvvg.supabase.co:6543/postgres"
     
   }
 });
