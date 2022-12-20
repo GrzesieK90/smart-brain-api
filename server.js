@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-const { createClient } = require('@supabase/supabase.js')
+const { createClient } = require('@supabase/supabase-js')
 
 const register = require('./Controllers/register');
 const signin = require('./Controllers/signin');
