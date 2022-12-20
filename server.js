@@ -11,7 +11,7 @@ const image = require('./Controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    connection_string: "postgresql://postgres:[14Strong02Pass90]@db.mdaquwtehnfqgxfyqvvg.supabase.co:5432/postgres"
+    connection_string: "postgres://smart_brain_api_db_user:DEkMAFOkFEVdxKW6Jp3zksmPM5QIVKh3@dpg-cegr7mp4rebaribcf1j0-a/smart_brain_api_db"
     
   }
 });
