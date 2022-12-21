@@ -9,17 +9,7 @@ const signin = require('./Controllers/signin');
 const profile = require('./Controllers/profile');
 const image = require('./Controllers/image');
 
-const supabase = createClient(
-  'https://mdaquwtehnfqgxfyqvvg.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1kYXF1d3RlaG5mcWd4ZnlxdnZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzE0NzUxMDIsImV4cCI6MTk4NzA1MTEwMn0.o-772Rj6SAFU7y4rPOUJlQAOrZE7zYVt5UcxR1pE8GA'
-);
-
-const db = knex({
-  client: 'pg',
-  connection: {
-    connection_string: "postgres://postgres:[1dqshvpUeVcHocxO]@db.mdaquwtehnfqgxfyqvvg.supabase.co:6543/postgres" 
-  }
-});
+const db = createClient('https://mdaquwtehnfqgxfyqvvg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1kYXF1d3RlaG5mcWd4ZnlxdnZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzE0NzUxMDIsImV4cCI6MTk4NzA1MTEwMn0.o-772Rj6SAFU7y4rPOUJlQAOrZE7zYVt5UcxR1pE8GA')
 
 const app = express();
 
