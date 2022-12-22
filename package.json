@@ -4,7 +4,7 @@
   "description": "smartbrainface",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "server.js"
   },
   "author": "Greg",
   "license": "ISC",
