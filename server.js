@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
+// const cors = require('cors');
 const knex = require('knex');
 
 const register = require('./Controllers/register');
@@ -20,7 +20,7 @@ const db = knex({
 
 const app = express();
 
-app.use(cors())
+// app.use(cors())
 app.use(express.json()); 
 
 app.get('/', (req, res)=> { res.send('it is working') })
