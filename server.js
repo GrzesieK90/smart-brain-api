@@ -8,7 +8,7 @@ const signin = require('./Controllers/signin');
 const profile = require('./Controllers/profile');
 const image = require('./Controllers/image');
 
-const knex = require('knex')({
+const db = knex({
   client: 'pg',
   connection: {
     host : 'containers-us-west-137.railway.app',
@@ -31,4 +31,5 @@ app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
 app.put('/image', (req, res) => { image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
 
-app.listen(6538, ()=> { console.log('App is running on port 5638') })
+app.listen(6538, ()=> { console.log('App is running on port 6538') })
+
