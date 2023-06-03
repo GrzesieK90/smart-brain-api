@@ -9,6 +9,7 @@ const profile = require('./Controllers/profile');
 const image = require('./Controllers/image');
 
 const db = knex({
+  client: 'pg',
   connection: {
     host : 'containers-us-west-137.railway.app',
     port : 6538,
