@@ -8,11 +8,14 @@ const signin = require('./Controllers/signin');
 const profile = require('./Controllers/profile');
 const image = require('./Controllers/image');
 
-const db = knex({
+const knex = require('knex')({
   client: 'pg',
   connection: {
-    connectionString: "postgresql://postgres:16TyxHExLlnHYZXxVftD@containers-us-west-137.railway.app:6538/railway",
-    ssl: { rejectUnauthorized: false }
+    host : 'containers-us-west-137.railway.app',
+    port : 6538,
+    user : 'postgres',
+    password : '16TyxHExLlnHYZXxVftD',
+    database : 'postgresql://postgres:16TyxHExLlnHYZXxVftD@containers-us-west-137.railway.app:6538/railway'
   }
 });
 
@@ -28,4 +31,4 @@ app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
 app.put('/image', (req, res) => { image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
 
-app.listen(process.env.PGPORT  || 3000, ()=> { console.log(`App is running on port ${process.env.PORT }!`) })
+app.listen(process.env.PORT  || 3000, ()=> { console.log(`App is running on port ${process.env.PORT }!`) })
