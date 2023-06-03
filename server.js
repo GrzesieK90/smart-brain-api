@@ -9,9 +9,13 @@ const profile = require('./Controllers/profile');
 const image = require('./Controllers/image');
 
 const db = knex({
-  client: 'pg',
-  connection: process.env.DATABASE_URL,
-  searchPath: ['knex', 'public'],
+  connection: {
+    host : 'containers-us-west-137.railway.app',
+    port : 6538,
+    user : 'postgres',
+    password : '16TyxHExLlnHYZXxVftD',
+    database : 'postgresql://postgres:16TyxHExLlnHYZXxVftD@containers-us-west-137.railway.app:6538/railway'
+  }
 });
 
 const app = express();
