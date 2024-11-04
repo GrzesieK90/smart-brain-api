@@ -1,35 +1,34 @@
+require('dotenv').config(); // Dodaj to na początku pliku
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
-const knex = require('knex');
+const mongoose = require('mongoose');
 
 const register = require('./Controllers/register');
 const signin = require('./Controllers/signin');
 const profile = require('./Controllers/profile');
 const image = require('./Controllers/image');
 
-const db = knex({
-  client: 'pg',
-  connection: {
-    host : 'containers-us-west-137.railway.app',
-    port : 6538,
-    user : 'postgres',
-    password : '16TyxHExLlnHYZXxVftD',
-    database : 'postgresql://postgres:16TyxHExLlnHYZXxVftD@containers-us-west-137.railway.app:6538/railway'
-  }
-});
+// Połączenie z MongoDB
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  tlsInsecure: true // Dodaj tę linię
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.log('Error connecting to MongoDB:', err));
 
 const app = express();
 
-app.use(cors())
-app.use(express.json()); 
+app.use(cors());
+app.use(express.json());
 
-app.get('/', (req, res)=> { res.send('it is working') })
-app.post('/signin', signin.handleSignin(db, bcrypt))
-app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
-app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
-app.put('/image', (req, res) => { image.handleImage(req, res, db)})
-app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
+app.get('/', (req, res) => { res.send('it is working') });
+app.post('/signin', signin.handleSignin(bcrypt));
+app.post('/register', register.handleRegister(bcrypt));
+app.get('/profile/:id', profile.handleProfileGet);
+app.put('/image', image.handleImage);
+app.post('/imageurl', image.handleApiCall);
 
-const port = process.env.PORT || 3000;
-app.listen(port, "0.0.0.0", ()=> { console.log(`App is running on port ${port}`) })
+const port = 3001;
+app.listen(port, () => { console.log(`App is running on port ${port}`) });
